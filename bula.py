@@ -1,29 +1,29 @@
 import math
 imie = input("Witaj przybyszu, jak się nazywasz?: ")
-a = float(input("Wprowadz szanse na krolika: "))
-b = float(math.sqrt(10))
-c = a * b
-d = c
-''' do udoskonalenia
-def menu(dzialanie): 
-    dzialanie = ""
-    operacja = input("Witaj",imie, "Jaką operację chciałbyś wykonać?\n1.Obliczenie szansy na królika\n2.Zidentyfikowanie zanieczyszczonych buł\n3.Określenie szansy na WS")
-    if operacja == "1":
-        operacja = szansa_na_krolika
-    elif operacja == "2":
-        operacja = "zanieczyszczone_buly"
-    elif operacja == "3":
-        operacja = "Szansa_na_WS"   
-    dzialanie = operacja + "()"
-    return dzialanie
- 
-menu(dzialanie)   '''                    
+print("Witaj", imie) 
+menu_options = {
+    1: 'Szansa na królika',
+    2: 'Zanieczyszczone buły',
+    3: 'Szansa na WS',
+    4: 'Wyjście',
+}
+
+def print_menu():
+    for key in menu_options.keys():
+        print (key, '--', menu_options[key] )
 
 def szansa_na_krolika():
+    a = float(input("Wprowadz szanse na krolika: "))
+    b = float(math.sqrt(10))
+    c = a * b
+    d = c
     if d > 100:
         d = 100
     f = round(d,2)
-
+    print("Szanse na krolika wynosza: ", a,"%","natomiast szansa na kota przy grzałce wynosi",d,"%")
+    return szansa_na_krolika
+    szansa_na_krolika()
+    
 
 def zanieczyszczone_buly():
     opakowanie = ["bula1", "bula2", "bula3", "bula4", "bula5", "bula6"]
@@ -33,18 +33,41 @@ def zanieczyszczone_buly():
         else:
             print("Buła jest czysta")
     return opakowanie
-zanieczyszczone_buly()
-
+    zanieczyszczone_buly()
 
 def szansa_na_WS():
     T = "" #okres polowicznego rozpadu szympansa NIE DZIALA
+    a = float(input("Wprowadz szanse na krolika: "))
+    b = float(math.sqrt(10))
+    c = a * b
+    d = c
+    if d > 100:
+        d = 100
+    f = round(d,2)
     Szansa_na_WS = float((d - a) * b)
     if Szansa_na_WS < 1:
         print("Szansa na wiadomo co wiadomo co nie może zostać oszacowana")
     else:
         print("Szansza na wiadomo co wiadomo co wynosi:",Szansa_na_WS, end="%\n")
     return szansa_na_WS
-szansa_na_WS()        
-    
+    szansa_na_WS()
 
-print("Szanse na krolika wynosza: ", a,"%","natomiast szansa na kota przy grzałce wynosi",d,"%")
+if __name__=='__main__':
+    while(True):
+        print_menu()
+        option = ''
+        try:
+            option = int(input('Wybierz działanie: '))
+        except:
+            print('Złe dane. Proszę wprowadzić numer ...')
+        if option == 1:
+            szansa_na_krolika()
+        elif option == 2:
+            zanieczyszczone_buly()
+        elif option == 3:
+            szansa_na_WS()
+        elif option == 4:
+            print('Dzięki. Zapraszam ponownie')
+            exit()
+        else:
+            print('Zła opcja. Proszę wybrać numer między 1 a 4.')
