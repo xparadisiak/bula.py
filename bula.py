@@ -1,5 +1,9 @@
 import math
 imie = input("Witaj przybyszu, jak się nazywasz?: ")
+a = float(input("Wprowadz szanse na krolika: "))
+b = float(math.sqrt(10))
+c = a * b
+d = c
 ''' do udoskonalenia
 def menu(dzialanie): 
     dzialanie = ""
@@ -12,17 +16,14 @@ def menu(dzialanie):
         operacja = "Szansa_na_WS"   
     dzialanie = operacja + "()"
     return dzialanie
-'''       
-menu(dzialanie)                 
+ 
+menu(dzialanie)   '''                    
 
 def szansa_na_krolika():
-    a = float(input("Wprowadz szanse na krolika: "))
-    b = float(math.sqrt(10))
-    c = a * b
-    d = c
     if d > 100:
         d = 100
     f = round(d,2)
+
 
 def zanieczyszczone_buly():
     opakowanie = ["bula1", "bula2", "bula3", "bula4", "bula5", "bula6"]
@@ -47,7 +48,3 @@ szansa_na_WS()
     
 
 print("Szanse na krolika wynosza: ", a,"%","natomiast szansa na kota przy grzałce wynosi",d,"%")
-
-
-
-
