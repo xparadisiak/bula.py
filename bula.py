@@ -1,11 +1,21 @@
+#!/usr/bin/python3
+
+from codecs import open
+from datetime import date
+import subprocess
+import os
 import math
+import urllib.request
+
 imie = input("Witaj przybyszu, jak się nazywasz?: ")
-print("Witaj", imie) 
+data = date.today()
+print("Witaj", imie + ",", "dzisiejsza data:",data) 
 menu_options = {
     1: 'Szansa na królika',
     2: 'Zanieczyszczone buły',
     3: 'Szansa na WS',
-    4: 'Wyjście',
+    4: 'Losowa ciekawostka',
+    5: 'Wyjście'
 }
 
 def print_menu():
@@ -47,10 +57,17 @@ def szansa_na_WS():
     Szansa_na_WS = float((d - a) * b)
     if Szansa_na_WS < 1:
         print("Szansa na wiadomo co wiadomo co nie może zostać oszacowana")
+
     else:
         print("Szansza na wiadomo co wiadomo co wynosi:",Szansa_na_WS, end="%\n")
     return szansa_na_WS
     szansa_na_WS()
+
+def ciekawostki():
+    ciekawostka = "python3 ciekawostki.py"
+    fileDir = os.path.dirname(os.path.realpath(__file__))
+    process = subprocess.check_output(ciekawostka.split(), cwd=fileDir)
+    print(process.decode('latin-1'))
 
 if __name__=='__main__':
     while(True):
@@ -67,7 +84,11 @@ if __name__=='__main__':
         elif option == 3:
             szansa_na_WS()
         elif option == 4:
+            print("Ciekawostka: ",ciekawostki())    
+        elif option == 5:
             print('Dzięki. Zapraszam ponownie')
             exit()
         else:
-            print('Zła opcja. Proszę wybrać numer między 1 a 4.')
+            print('Zła opcja. Proszę wybrać numer między 1 a 5.')
+
+
