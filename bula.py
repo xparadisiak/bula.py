@@ -107,7 +107,7 @@ def interfejs_tekstowy():
             elif option == 3:
                 szansa_na_WS()
             elif option == 4:
-                print("Ciekawostka: ",ciekawostki())    
+                ciekawostki()
             elif option == 5:
                 print('Dzięki. Zapraszam ponownie')
                 exit()
